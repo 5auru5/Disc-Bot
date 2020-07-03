@@ -9,7 +9,7 @@ class GoogleServices(commands.Cog):
         self.bot = bot
 
     @commands.command(name='Calendar', help='Create and manage Google Calendar events')
-    async def Calendar(self, ctx, string):
+    async def Calendar(self, ctx, string="options"):
         optionsScreen = "```Here are the commands you can use:\n +Calendar Create - Create a calendar\n +Calendar edit - Edit a calendar\n +Calendar delete - Delete a calendar event\n +Calendar invite - Invite a user to a calendar```"
         await ctx.send(optionsScreen)
         def create():
