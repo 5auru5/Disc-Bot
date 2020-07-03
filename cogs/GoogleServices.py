@@ -9,7 +9,7 @@ class GoogleServices(commands.Cog):
         self.bot = bot
 
     @commands.command(name='Calendar', help='Create and manage Google Calendar events')
-    async def Calendar(self, ctx):
+    async def Calendar(self, ctx, string):
         await ctx.send("This command is being configured")
     
     @commands.command(name='CreateDoc', help='Create a new Google Doc')
