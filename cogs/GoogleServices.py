@@ -16,12 +16,17 @@ class GoogleServices(commands.Cog):
             ctx.send("Editing a calendar event!")
         def delete():
             ctx.send("Deleting a calendar event!")
-        options = {
-            create : create,
-            edit : edit,
-            delete : delete,
-        }
-        options[string]()    
+        def invite():
+            ctx.send("Please Select a calendar event")
+        def options(string):
+            switcher = {
+                "create" : create,
+                "edit" : edit,
+                "delete" : delete,
+                "invite" : invite,
+            }
+            return switcher.get(string)
+        options(string)    
         await ctx.send("This command is being configured")
     
     @commands.command(name='CreateDoc', help='Create a new Google Doc')
