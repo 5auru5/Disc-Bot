@@ -11,11 +11,11 @@ class GoogleServices(commands.Cog):
     @commands.command(name='Calendar', help='Create and manage Google Calendar events')
     async def Calendar(self, ctx, string):
         def create():
-            await ctx.send("Creating a calendar event!")
+            ctx.send("Creating a calendar event!")
         def edit():
-            await ctx.send("Editing a calendar event!")
+            ctx.send("Editing a calendar event!")
         def delete():
-            await ctx.send("Deleting a calendar event!")
+            ctx.send("Deleting a calendar event!")
         options = {
             create : create,
             edit : edit,
