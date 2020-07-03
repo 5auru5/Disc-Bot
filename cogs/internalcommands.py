@@ -11,7 +11,7 @@ class InternalCommands(commands.Cog):
 
     @commands.command(name='status', help='Status command to see if bot is working')
     async def status(self, ctx):
-        test_reply = "```bash\nThe Bot is \"online\" and currently working```
+        test_reply = "```bash\nThe Bot is \"online\" and currently working```"
         response = test_reply
         await ctx.send(response)
     @commands.command(name='uptime', help='See current bot uptime')
