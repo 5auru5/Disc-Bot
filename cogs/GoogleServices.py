@@ -10,6 +10,8 @@ class GoogleServices(commands.Cog):
 
     @commands.command(name='Calendar', help='Create and manage Google Calendar events')
     async def Calendar(self, ctx, string):
+        optionsScreen = "```Here are the commands you can use:\n +Calendar Create - Create a calendar\n +Calendar edit - Edit a calendar\n +Calendar delete - Delete a calendar event\n +Calendar invite - Invite a user to a calendar```"
+        ctx.send(optionsScreen)
         def create():
             ctx.send("Creating a calendar event!")
         def edit():
