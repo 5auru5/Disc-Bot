@@ -21,15 +21,15 @@ class GoogleServices(commands.Cog):
             ctx.send("Deleting a calendar event!")
         def invite():
             ctx.send("Please Select a calendar event")
-        def options(string):
+        def options(optionSelection):
             switcher = {
                 "create" : create,
                 "edit" : edit,
                 "delete" : delete,
                 "invite" : invite,
             }
-            return switcher.get(string)
-        options(string)    
+            switcher.get(optionSelection)
+        options(string) 
         await ctx.send("NOTE: This command is being configured")
     
     @commands.command(name='Docs', help='Create and manage Google Docs')
@@ -37,6 +37,17 @@ class GoogleServices(commands.Cog):
         if string == "options":
             optionsScreen = "```Here are the commands you can use:\n +Docs Create - Create a Google Doc\n +Docs invite - Invite a user to a Google Doc\n```"
             await ctx.send(optionsScreen)
+        def create():
+            ctx.send("Creating a calendar event!")
+        def invite():
+            ctx.send("Editing a calendar event!")
+        def options(optionSelection):
+            switcher = {
+                "create" : create,
+                "invite" : invite,
+            }
+            switcher.get(optionSelection)
+        options(string)   
         await ctx.send("NOTE: This command is being configured")
 
     @commands.command(name='Sheets', help='Create and manage Google Sheets')
@@ -44,6 +55,17 @@ class GoogleServices(commands.Cog):
         if string == "options":
             optionsScreen = "```Here are the commands you can use:\n +Sheets Create - Create a Google Sheet\n +Sheets invite - Invite a user to a Google Sheet\n```"
             await ctx.send(optionsScreen)
+        def create():
+            ctx.send("Creating a calendar event!")
+        def invite():
+            ctx.send("Editing a calendar event!")
+        def options(optionSelection):
+            switcher = {
+                "create" : create,
+                "invite" : invite,
+            }
+            switcher.get(optionSelection)
+        options(string)
         await ctx.send("NOTE: This command is being configured")
     
     @commands.command(name='Slides', help='Create and manage Google Slides')
@@ -51,6 +73,17 @@ class GoogleServices(commands.Cog):
         if string == "options":
             optionsScreen = "```Here are the commands you can use:\n +Slides Create - Create a Google Slide\n +Slides invite - Invite a user to a Google Slide\n```"
             await ctx.send(optionsScreen)
+        def create():
+            ctx.send("Creating a calendar event!")
+        def invite():
+            ctx.send("Editing a calendar event!")
+        def options(optionSelection):
+            switcher = {
+                "create" : create,
+                "invite" : invite,
+            }
+            switcher.get(optionSelection)
+        options(string)
         await ctx.send("NOTE: This command is being configured")
 def setup(bot):
     bot.add_cog(GoogleServices(bot))
