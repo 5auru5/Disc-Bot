@@ -57,6 +57,8 @@ class GoogleServices(commands.Cog):
             await ctx.send(optionsScreen)
         if string == "create":
             await ctx.send("Creating a new Google Sheet!")
+        if string == "invite":
+            await ctx.send("Ivitation Sent!")
         await ctx.send("NOTE: This command is being configured")
     
     @commands.command(name='Slides', help='Create and manage Google Slides')
