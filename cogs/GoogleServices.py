@@ -37,6 +37,7 @@ class GoogleServices(commands.Cog):
         if string == "options":
             optionsScreen = "```Here are the commands you can use:\n +Docs Create - Create a Google Doc\n +Docs invite - Invite a user to a Google Doc\n```"
             await ctx.send(optionsScreen)
+        #Just Let me use cases please, I know there's a way to make this work but i'm dumb
         async def create():
             await ctx.send("Creating a calendar event!")
         async def invite():
