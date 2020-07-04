@@ -22,7 +22,7 @@ class InternalCommands(commands.Cog):
         await ctx.send("Current Uptime: " + text)
     @commands.command(name='info', help='See current bot uptime')
     async def info(self, ctx):
-        reply = "```Email: BussyBotDiscord@gmail.com\nGithub:https://github.com/5auru5/Bussy-Bot\nDiscord: https://discord.gg/agUTtYZ```"
+        reply = "```Email: BussyBotDiscord@gmail.com\nGithub: www.github.com/5auru5/Bussy-Bot\nDiscord: https://discord.gg/agUTtYZ```"
         await ctx.send(reply)
 
 def setup(bot):
