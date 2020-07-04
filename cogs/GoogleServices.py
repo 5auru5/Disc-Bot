@@ -55,17 +55,8 @@ class GoogleServices(commands.Cog):
         if string == "options":
             optionsScreen = "```Here are the commands you can use:\n +Sheets Create - Create a Google Sheet\n +Sheets invite - Invite a user to a Google Sheet\n```"
             await ctx.send(optionsScreen)
-        async def create():
-            await ctx.send("Creating a calendar event!")
-        async def invite():
-            await ctx.send("Editing a calendar event!")
-        async def options(optionSelection):
-            switcher = {
-                "create" : create,
-                "invite" : invite,
-            }
-            switcher.get(optionSelection)
-        options(string)
+        if string == "create":
+            await ctx.send("Creating a new Google Sheet!")
         await ctx.send("NOTE: This command is being configured")
     
     @commands.command(name='Slides', help='Create and manage Google Slides')
