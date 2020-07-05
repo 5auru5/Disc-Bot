@@ -37,4 +37,5 @@ async def on_error(event, *args, **kwargs):
 
 bot.load_extension("cogs.internalcommands")
 bot.load_extension("cogs.GoogleServices")
+bot.load_extension("cogs.Twitter")
 bot.run(TOKEN)
