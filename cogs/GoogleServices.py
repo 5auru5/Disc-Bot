@@ -13,23 +13,14 @@ class GoogleServices(commands.Cog):
         if string == "options":
             optionsScreen = "```Here are the commands you can use:\n +Calendar Create - Create a calendar\n +Calendar edit - Edit a calendar\n +Calendar delete - Delete a calendar event\n +Calendar invite - Invite a user to a calendar```"
             await ctx.send(optionsScreen)
-        async def create():
+        if string == "create":
             await ctx.send("Creating a calendar event!")
-        async def edit():
+        if string == "edit":
             await ctx.send("Editing a calendar event!")
-        async def delete():
+        if string == "delete":
             await ctx.send("Deleting a calendar event!")
-        async def invite():
+        if string == "invite":
             await ctx.send("Please Select a calendar event")
-        async def options(optionSelection):
-            switcher = {
-                "create" : create,
-                "edit" : edit,
-                "delete" : delete,
-                "invite" : invite,
-            }
-            switcher.get(optionSelection)
-        options(string) 
         await ctx.send("NOTE: This command is being configured")
     
     @commands.command(name='Docs', help='Create and manage Google Docs')
@@ -37,17 +28,10 @@ class GoogleServices(commands.Cog):
         if string == "options":
             optionsScreen = "```Here are the commands you can use:\n +Docs Create - Create a Google Doc\n +Docs invite - Invite a user to a Google Doc\n```"
             await ctx.send(optionsScreen)
-        #Just Let me use cases please, I know there's a way to make this work but i'm dumb
-        async def create():
-            await ctx.send("Creating a calendar event!")
-        async def invite():
-            await ctx.send("Editing a calendar event!")
-        async def options(optionSelection):
-            switcher = {
-                "create" : create,
-                "invite" : invite,
-            }
-            switcher.get(optionSelection)
+        if string == "create":
+            await ctx.send("Creating a new Google Doc!")
+        if string == "invite":
+            await ctx.send("Ivitation Sent!")
         options(string)   
         await ctx.send("NOTE: This command is being configured")
 
@@ -67,17 +51,10 @@ class GoogleServices(commands.Cog):
         if string == "options":
             optionsScreen = "```Here are the commands you can use:\n +Slides Create - Create a Google Slide\n +Slides invite - Invite a user to a Google Slide\n```"
             await ctx.send(optionsScreen)
-        async def create():
-            await ctx.send("Creating a calendar event!")
-        async def invite():
-            await ctx.send("Editing a calendar event!")
-        async def options(optionSelection):
-            switcher = {
-                "create" : create,
-                "invite" : invite,
-            }
-            switcher.get(optionSelection)
-        options(string)
+        if string == "create":
+            await ctx.send("Creating a new Google Slide!")
+        if string == "invite":
+            await ctx.send("Ivitation Sent!")
         await ctx.send("NOTE: This command is being configured")
 def setup(bot):
     bot.add_cog(GoogleServices(bot))
