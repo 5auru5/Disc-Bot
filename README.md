@@ -3,6 +3,7 @@ A simple and open source Discord bot written on python and using [discord.py](ht
 
 **Current Integrations:**
 - [WIP] Google Services (Calendar,Docs,Sheets,Slides)
+- User Statuses
 - Internal commands - Such as uptime of the bot 
 ## Requirements
 - Python3
