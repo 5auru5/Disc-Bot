@@ -1,2 +1,3 @@
 discord
-dateutil
+tinybd
+python-dotenv
