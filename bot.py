@@ -2,7 +2,7 @@
 import os
 import time
 from json import dumps
-import uuid
+from dotenv import load_dotenv
 from tinydb import TinyDB, Query
 from tinydb.operations import set
 import datetime
@@ -14,11 +14,37 @@ import asyncio
 import logging
 import logging.handlers
 
+#######################
+#                     #
+#    LOGGING SETUP    #
+#                     #
+#######################
 logging.basicConfig(level=logging.DEBUG)
+
+##################
+#                #
+#    DB SETUP    #
+#                #
+##################
 db = TinyDB('db.json')
 User = Query()
 Event_id = Query
-TOKEN = ""
+
+#####################
+#                   #
+#    TOKEN SETUP    #
+#                   #
+#####################
+load_dotenv()
+TOKEN = os.getenv('DISCORD_TOKEN')
+if TOKEN is None:
+    raise EnvironmentError("No DISCORD_TOKEN Env variable found! Did you set your .env file?")
+
+######################
+#                    #
+#    CLIENT SETUP    #
+#                    #
+######################
 intents = discord.Intents.all()
 intents.members = True
 intents.message_content = True
@@ -54,15 +80,17 @@ async def on_error(event, *args, **kwargs):
             
 @client.event
 async def on_voice_state_update(member, before, after):
-    if db.search((User.name == member.id) & (User.session_status == "ACTIVE")) == []:
-        db.insert({'name': member.id, 'start_time': 0, 'end_time': 0, 'session_status': 'ACTIVE'})
-    if not before.channel and after.channel:
-        start_time = datetime.now()
-        db.update(set('start_time', start_time.timestamp()), (User.name == member.id) & (User.session_status == "ACTIVE"))
-    if before.channel and not after.channel:
-        end_time = datetime.now()
-        db.update(set('end_time',  end_time.timestamp()), (User.name == member.id) & (User.session_status == "ACTIVE"))
-        db.update(set('session_status',  "TERMINATED"), (User.name == member.id) & (User.session_status == "ACTIVE"))
+    if not before.channel or not after.channel: #only send update if user joins or leaves channel
+        if db.search((User.name == member.id) & (User.session_status == "ACTIVE")) == []: #Should only create a new DB entry of no Active session for user
+            db.insert({'name': member.id, 'start_time': 0, 'end_time': 0, 'session_status': 'ACTIVE'})
+            start_time = datetime.now()
+            db.update(set('start_time', start_time.timestamp()), (User.name == member.id) & (User.session_status == "ACTIVE"))
+        if before.channel and not after.channel:
+            end_time = datetime.now()
+            db.update(set('end_time',  end_time.timestamp()), (User.name == member.id) & (User.session_status == "ACTIVE"))
+            db.update(set('session_status',  "TERMINATED"), (User.name == member.id) & (User.session_status == "ACTIVE"))
+    else:
+        pass
         
             
 

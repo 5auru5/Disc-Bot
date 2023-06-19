@@ -7,6 +7,7 @@ import logging
 from datetime import datetime, timedelta
 from tinydb import TinyDB, Query
 from discord import client
+from discord.utils import get
 start_time = time.time()
 
 db = TinyDB('db.json')
@@ -29,13 +30,18 @@ class Stats(commands.Cog):
                 end_time = datetime.fromtimestamp(instance["end_time"])
             else:
                 end_time = datetime.now()
-            diff = end_time - start_time
-            days, seconds = diff.days, diff.seconds
-            hours = days * 24 + seconds // 3600
-            minutes = (seconds % 3600) // 60
-            seconds = seconds % 60
-            time_sum += timedelta(days=days, seconds=seconds, microseconds=0, milliseconds=0, minutes=minutes, hours=hours, weeks=0)
-        await ctx.send(f"USER Alive Time: {time_sum}")
+            time_sum += self.find_time_diff(start_time, end_time)
+        user = self.bot.get_user(int(member_id))
+        await ctx.send(f"```User Summary:\nUser Name: {user.global_name}\nTime Online: {time_sum}\n```")
+        
+    def find_time_diff(self, start_time : datetime, end_time : datetime) -> timedelta:
+        diff = end_time - start_time
+        days, seconds = diff.days, diff.seconds
+        hours = days * 24 + seconds // 3600
+        minutes = (seconds % 3600) // 60
+        seconds = seconds % 60
+        return timedelta(days=days, seconds=seconds, microseconds=0, milliseconds=0, minutes=minutes, hours=hours, weeks=0)
+    
                 
 
 async def setup(bot):
