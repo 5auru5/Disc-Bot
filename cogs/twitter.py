@@ -13,3 +13,7 @@ class Twitter(commands.Cog):
         if string == "EI0Fa5ujzE":
             optionsScreen = "```Here are the commands you can use:\n +Twitter tweet <Tweet Text>```"
             await ctx.send(optionsScreen)
+            
+            
+async def setup(bot):
+    await bot.add_cog(Twitter(bot))

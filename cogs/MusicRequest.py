@@ -19,6 +19,6 @@ class MusicRequest(commands.Cog):
             await ctx.send("The current Radio stations you can pull are:\n Synthwave\n LoFi\n ")
         await ctx.send(response)
 
-def setup(bot):
-    bot.add_cog(InternalCommands(bot))
+async def setup(bot):
+    await bot.add_cog(MusicRequest(bot))
 

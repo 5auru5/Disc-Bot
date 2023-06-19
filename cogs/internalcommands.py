@@ -25,8 +25,8 @@ class InternalCommands(commands.Cog):
         reply = "```Email: BussyBotDiscord@gmail.com\nGithub: www.github.com/5auru5/Bussy-Bot\nDiscord: https://discord.gg/agUTtYZ```"
         await ctx.send(reply)
 
-def setup(bot):
-    bot.add_cog(InternalCommands(bot))
+async def setup(bot):
+    await bot.add_cog(InternalCommands(bot))
 
 
 
